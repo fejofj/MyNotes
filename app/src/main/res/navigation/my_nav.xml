@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_nav"
+    app:startDestination="@id/listFragment">
+
+    <fragment
+        android:id="@+id/listFragment"
+        android:name="com.example.mynotes.ListFragment"
+        android:label="My Notes"
+        tools:layout="@layout/fragment_list" >
+        <action
+            android:id="@+id/action_listFragment_to_addNotesFragment1"
+            app:destination="@id/addNotesFragment1" />
+        <action
+            android:id="@+id/action_listFragment_to_addNotesFragment12"
+            app:destination="@id/addNotesFragment1" />
+        <action
+            android:id="@+id/action_listFragment_to_updateFragment"
+            app:destination="@id/updateFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addNotesFragment1"
+        android:name="com.example.mynotes.AddNotesFragment1"
+        android:label="Add Notes"
+        tools:layout="@layout/fragment_add_notes" >
+        <action
+            android:id="@+id/action_addNotesFragment1_to_listFragment"
+            app:destination="@id/listFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/updateFragment"
+        android:name="com.example.mynotes.UpdateFragment"
+        android:label="Update Notes"
+        tools:layout="@layout/fragment_update" >
+        <action
+            android:id="@+id/action_updateFragment_to_listFragment"
+            app:destination="@id/listFragment" />
+        <argument
+            android:name="updateArgs"
+            app:argType="com.example.mynotes.data.Notes" />
+    </fragment>
+</navigation>
