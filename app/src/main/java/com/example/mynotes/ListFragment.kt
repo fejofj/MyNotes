@@ -2,11 +2,10 @@ package com.example.mynotes
 
 import android.os.Bundle
 import android.view.*
-import androidx.fragment.app.Fragment
-import android.widget.Button
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
+import androidx.fragment.app.Fragment
+
+
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
@@ -25,6 +24,7 @@ private lateinit var mNotesViewModel:NotesViewModel
   private lateinit var recyclerView: RecyclerView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        (activity as AppCompatActivity).supportActionBar?.show()
         setHasOptionsMenu(true)
 
     }
@@ -43,7 +43,7 @@ recyclerView= view.findViewById(R.id.rcView)
         recyclerView.layoutManager= GridLayoutManager(requireContext(),2)
 
         mNotesViewModel=ViewModelProvider(this).get(NotesViewModel::class.java)
-        mNotesViewModel.readAllData.observe(viewLifecycleOwner, Observer { notes ->
+        mNotesViewModel.readAllData.observe(viewLifecycleOwner, { notes ->
             adapter.setData(notes)
         })
 

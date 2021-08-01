@@ -1,6 +1,7 @@
 package com.example.mynotes.data
 
 
+import android.icu.text.CaseMap
 import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -14,5 +15,6 @@ data class Notes(
     @PrimaryKey(autoGenerate = true)
     val id : Int,
     val date:Long,
-    val notes:String
+    val notes:String,
+    val title: String?
 ):Parcelable

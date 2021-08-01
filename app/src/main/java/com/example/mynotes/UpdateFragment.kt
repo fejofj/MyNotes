@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.get
 import androidx.navigation.fragment.findNavController
@@ -23,6 +24,7 @@ class UpdateFragment : Fragment() {
     private lateinit var mViewModel :NotesViewModel
 override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+    (activity as AppCompatActivity).supportActionBar?.show()
     setHasOptionsMenu(true)
     }
     @InternalCoroutinesApi
@@ -36,7 +38,8 @@ override fun onCreate(savedInstanceState: Bundle?) {
         mViewModel=ViewModelProvider(this).get(NotesViewModel::class.java)
         val upNotes = view.findViewById<EditText>(R.id.upNotes)
         val upBtn = view.findViewById<Button>(R.id.upBtn)
-
+        val upTitle = view.findViewById<EditText>(R.id.upNotesTitle)
+upTitle.setText(args.updateArgs.title)
             upNotes.setText(args.updateArgs.notes)
         upBtn.setOnClickListener {
             updateNotes()
@@ -48,9 +51,10 @@ override fun onCreate(savedInstanceState: Bundle?) {
     @InternalCoroutinesApi
     private fun updateNotes() {
         val upnotes = view?.findViewById<EditText>(R.id.upNotes)?.text.toString()
+        val upTitle = view?.findViewById<EditText>(R.id.upNotesTitle)?.text.toString()
         if(inputCheck(upnotes)){
 
-            val upNotes = Notes(args.updateArgs.id,args.updateArgs.date,upnotes)
+            val upNotes = Notes(args.updateArgs.id,args.updateArgs.date,upnotes,upTitle)
             mViewModel.updateNotes(upNotes)
             Toast.makeText(requireContext(), "Notes Updated", Toast.LENGTH_SHORT).show()
             findNavController().navigate(R.id.action_updateFragment_to_listFragment)

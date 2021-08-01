@@ -1,25 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".UpdateFragment"
-
     android:layout_columnSpan="2"
-    android:layout_span="20">
+
+    android:layout_span="20"
+    tools:context=".UpdateFragment">
+
+    <EditText
+        android:id="@+id/upNotesTitle"
+        android:layout_width="365dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="44dp"
+        android:background="@drawable/et_bg"
+        android:ems="10"
+        android:hint="Title"
+        android:inputType="textPersonName"
+        android:paddingLeft="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/upNotes"
         android:layout_width="364dp"
         android:layout_height="349dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="104dp"
+        android:background="@drawable/et_bg"
         android:ems="10"
         android:gravity="start|top"
         android:hint="Add your notes"
         android:inputType="textMultiLine"
+        android:paddingLeft="16dp"
+        android:paddingTop="12dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.489"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -30,9 +48,10 @@
         android:text="UPDATE"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/upNotes"
-        app:layout_constraintVertical_bias="0.093" />
+        app:layout_constraintVertical_bias="0.045" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

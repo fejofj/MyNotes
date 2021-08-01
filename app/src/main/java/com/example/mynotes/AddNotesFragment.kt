@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -26,6 +27,7 @@ class AddNotesFragment1 : Fragment() {
     @InternalCoroutinesApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        (activity as AppCompatActivity).supportActionBar?.show()
         mViewModel= ViewModelProvider(this).get(NotesViewModel::class.java)
 
     }
@@ -51,12 +53,12 @@ class AddNotesFragment1 : Fragment() {
     @InternalCoroutinesApi
     private fun addNotesToDB() {
         val notes = view?.findViewById<EditText>(R.id.notes)?.text.toString()
-
+val title = view?.findViewById<EditText>(R.id.notesTitle)?.text.toString()
         println("ddddddddddddddddddddddddddddddd$notes")
 val date = System.currentTimeMillis()
 
         if(inputCheck(notes)){
-            val notes =Notes(0,date,notes)
+            val notes =Notes(0,date,notes,title)
             mViewModel.addNotes(notes)
             Toast.makeText(requireContext(), "Notes Saved", Toast.LENGTH_SHORT).show()
             findNavController().navigate(R.id.action_addNotesFragment1_to_listFragment)
